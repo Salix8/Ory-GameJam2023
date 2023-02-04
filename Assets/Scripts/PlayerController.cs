@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             isGrounded = false;
-            animator.SetBool("IsJumping", true);
             rigidbody2d.AddForce(new Vector2(0, jumpForce));
         }
 
