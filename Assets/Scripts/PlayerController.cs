@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-        animator.SetBool("IsJumping", !isGrounded);
     }
 
     private void Flip()
