@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ece4ba1f145e146baed7b1f166a272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 3
   jumpForce: 250
   groundCheckRadius: 0.2
   whatIsGround:

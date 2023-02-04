@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 20.0f;
+    // Movimiento
+    public float speed = 3.0f;
     public float jumpForce = 250.0f;
     public float groundCheckRadius = 0.2f;
     public LayerMask whatIsGround;
     public Transform groundCheck;
+
+    public float sprintMultiplier = 2.0f;
+    public float sprintDuration = 2.0f;
+    public float sprintCooldown = 5.0f;
+
+
 
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     private bool facingRight = true;
     private bool isGrounded = false;
 
+    private float currentSpeed;
+    private bool canSprint = true;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        currentSpeed = speed;
     }
 
     // Update is called once per frame
@@ -29,13 +40,14 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
+        // Salto tocando suelo
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             isGrounded = false;
             rigidbody2d.AddForce(new Vector2(0, jumpForce));
         }
 
-        rigidbody2d.velocity = new Vector2(horizontal * speed, rigidbody2d.velocity.y);
+        rigidbody2d.velocity = new Vector2(horizontal * currentSpeed, rigidbody2d.velocity.y);
 
         if (horizontal > 0 && !facingRight)
         {
@@ -44,6 +56,12 @@ public class PlayerController : MonoBehaviour
         else if (horizontal < 0 && facingRight)
         {
             Flip();
+        }
+
+        // Sprint
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canSprint)
+        {
+            StartCoroutine(Sprint());
         }
     }
 
@@ -58,5 +76,15 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    IEnumerator Sprint()
+    {
+        canSprint = false;
+        currentSpeed = speed * sprintMultiplier;
+        yield return new WaitForSeconds(sprintDuration);
+        currentSpeed = speed;
+        yield return new WaitForSeconds(sprintCooldown);
+        canSprint = true;
     }
 }
