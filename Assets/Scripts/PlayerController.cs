@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float sprintMultiplier = 2.0f;
     public float sprintDuration = 2.0f;
     public float sprintCooldown = 5.0f;
+    // Skin
+    public int StageSkin = 1;
 
     // Controles
     public KeyCode jumpKey = KeyCode.W;
@@ -102,5 +104,11 @@ public class PlayerController : MonoBehaviour
         currentSpeed = speed;
         yield return new WaitForSeconds(sprintCooldown);
         canSprint = true;
+    }
+
+    public void ChangeSkin(int lv)
+    {
+        StageSkin += lv;
+        animator.SetInteger("StageSkin", StageSkin);
     }
 }

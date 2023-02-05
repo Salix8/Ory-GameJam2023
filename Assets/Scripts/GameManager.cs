@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public bool start = false;
 
+    // Camara
+    public GameObject CMvcam1;
+    public List<Transform> targets;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,8 @@ public class GameManager : MonoBehaviour
                 player1 = Instantiate(gPlayer1, new Vector2(0, 0), transform.rotation);
                 player2 = Instantiate(gPlayer2, new Vector2(0, 0), transform.rotation);
                 // vcam.Follow = player1.transform;
+                // CMvcam1.Follow = targets;
+                
             }
         }
         else if (gameOver)

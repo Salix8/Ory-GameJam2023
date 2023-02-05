@@ -42,11 +42,12 @@ GameObject:
   - component: {fileID: 4234109035681222280}
   - component: {fileID: 4234109035681222287}
   - component: {fileID: 4234109035681222286}
-  - component: {fileID: 4234109035681222285}
+  - component: {fileID: 3018081746915155783}
   - component: {fileID: 4234109035681222284}
+  - component: {fileID: 6957749651969842983}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4234109035681222291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.73, y: -0.97, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3373612278718132299}
@@ -157,8 +158,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4234109035681222285
-BoxCollider2D:
+--- !u!70 &3018081746915155783
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -170,19 +171,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13756156, y: -0.030146956}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.75, y: 3.75}
-    newSize: {x: 1.25, y: 1.25}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.42591906, y: 1.250905}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.028636664, y: -0.13674778}
+  m_Size: {x: 0.46458155, y: 0.86527}
+  m_Direction: 0
 --- !u!114 &4234109035681222284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +196,28 @@ MonoBehaviour:
   sprintMultiplier: 2
   sprintDuration: 2
   sprintCooldown: 5
+  StageSkin: 1
   jumpKey: 273
   jumpKey2: 305
   sprintKey: 303
+  jugador: 2
+--- !u!114 &6957749651969842983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234109035681222291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556ddf36f45c9c249888b0ff53c81ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameterName: Attack
+  Dead: 0
+  damage: 10
+  attackCooldown: 1
+  animator: {fileID: 0}
+  attackInput: 0
+  facingDirection: {x: 0, y: 0, z: 0}
   jugador: 2
