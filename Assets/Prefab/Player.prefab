@@ -202,3 +202,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 2106714521}
+  sprintMultiplier: 2
+  sprintDuration: 2
+  sprintCooldown: 5
+  jumpKey: 119
+  jumpKey2: 32
+  sprintKey: 304
+  jugador: 1

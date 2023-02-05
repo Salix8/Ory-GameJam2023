@@ -6,22 +6,29 @@ public class PlayerController : MonoBehaviour
 {
     // Movimiento
     public float speed = 3.0f;
+    // Salto
     public float jumpForce = 250.0f;
     public float groundCheckRadius = 0.2f;
     public LayerMask whatIsGround;
     public Transform groundCheck;
-
+    // Sprint
     public float sprintMultiplier = 2.0f;
     public float sprintDuration = 2.0f;
     public float sprintCooldown = 5.0f;
 
+    // Controles
+    public KeyCode jumpKey = KeyCode.W;
+    public KeyCode jumpKey2 = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
+    public int jugador;
 
 
     private Rigidbody2D rigidbody2d;
     private Animator animator;
+    // Salto
     private bool facingRight = true;
     private bool isGrounded = false;
-
+    // Sprint
     private float currentSpeed;
     private bool canSprint = true;
 
@@ -36,12 +43,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = 0.0f;
+
+        if (jugador == 1)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+        }
+        else if (jugador == 2)
+        {
+            horizontal = Input.GetAxis("Horizontal2");
+        }
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         // Salto tocando suelo
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded && (Input.GetKeyDown(jumpKey) || Input.GetKeyDown(jumpKey2)))
         {
             isGrounded = false;
             rigidbody2d.AddForce(new Vector2(0, jumpForce));
@@ -59,7 +75,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Sprint
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canSprint)
+        if (Input.GetKeyDown(sprintKey) && canSprint)
         {
             StartCoroutine(Sprint());
         }
