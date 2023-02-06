@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.R))
             {
                 start = true;
-                player1 = Instantiate(gPlayer1, new Vector2(38, 32), transform.rotation);
-                player2 = Instantiate(gPlayer2, new Vector2(42, 32), transform.rotation);
+                // player1 = Instantiate(gPlayer1, new Vector2(0, 0), transform.rotation);
+                player2 = Instantiate(gPlayer2, new Vector2(0, 0), transform.rotation);
                 audioSource.PlayOneShot(audioInicio);
                 // vcam.Follow = player1.transform;
                 // CMvcam1.Follow = targets;
